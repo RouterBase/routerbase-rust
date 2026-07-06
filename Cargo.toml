@@ -1,6 +1,6 @@
 [package]
 name = "routerbase"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Rust client for the RouterBase OpenAI-compatible API gateway."
 license = "MIT"
@@ -15,4 +15,3 @@ categories = ["api-bindings"]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 ureq = { version = "2", features = ["json"] }
-

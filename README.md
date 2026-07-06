@@ -7,7 +7,7 @@ This crate is a small blocking Rust client for chat completions and model listin
 
 ```toml
 [dependencies]
-routerbase = "0.1.0"
+routerbase = "0.1.1"
 ```
 
 ## Usage
@@ -33,4 +33,3 @@ println!("{}", response.first_text().unwrap_or_default());
 ## License
 
 MIT
-
