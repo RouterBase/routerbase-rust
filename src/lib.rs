@@ -74,9 +74,11 @@ fn decode_response<T>(response: ureq::Response) -> Result<T, RouterBaseError>
 where
     T: DeserializeOwned,
 {
-    let body = response.into_string().map_err(|error| RouterBaseError::Transport {
-        message: error.to_string(),
-    })?;
+    let body = response
+        .into_string()
+        .map_err(|error| RouterBaseError::Transport {
+            message: error.to_string(),
+        })?;
 
     Ok(serde_json::from_str(&body)?)
 }
@@ -195,11 +197,12 @@ impl fmt::Display for RouterBaseError {
                 write!(formatter, "RouterBase request failed ({status}): {body}")
             }
             Self::Json(error) => write!(formatter, "RouterBase JSON error: {error}"),
-            Self::Transport { message } => write!(formatter, "RouterBase transport error: {message}"),
+            Self::Transport { message } => {
+                write!(formatter, "RouterBase transport error: {message}")
+            }
         }
     }
 }
-
 impl Error for RouterBaseError {}
 
 impl From<serde_json::Error> for RouterBaseError {
@@ -238,4 +241,3 @@ mod tests {
         assert_eq!(response.first_text(), Some("hello from RouterBase"));
     }
 }
-
