@@ -117,7 +117,7 @@ pub struct ChatCompletionRequest {
     pub model: String,
     pub messages: Vec<Message>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub temperature: Option<f32>,
+    pub temperature: Option<f64>,
 }
 
 impl ChatCompletionRequest {
@@ -134,7 +134,7 @@ impl ChatCompletionRequest {
         self
     }
 
-    pub fn temperature(mut self, temperature: f32) -> Self {
+    pub fn temperature(mut self, temperature: f64) -> Self {
         self.temperature = Some(temperature);
         self
     }
